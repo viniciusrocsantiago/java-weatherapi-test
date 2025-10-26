@@ -47,11 +47,11 @@ java -jar target/weatherapp.jar
 
 API Endpoints (Usage)The API provides several endpoints to retrieve weather data. All endpoints are prefixed with /weather.
 
-| HTTP Method |                Path                |                                                                                   Description |
+| HTTP Method |                Path                |  Description |
 |:------------|:----------------------------------:|----------------------------------------------------------------------------------------------:|
-| GET         |        /weather/city/{city}        |                                                  Get current weather data for a specific city |
-| GET         |      /weather/forecast/{city}      |                                                  Get the weather forecast for a specific city |
+| GET         |        /weather/city/{city}        | Get current weather data for a specific city |
+| GET         |      /weather/forecast/{city}      | Get the weather forecast for a specific city |
 | GET         |            /weather/csv            | Process weather data from a CSV file and return the results. (Inferred to be a batch process) |
-| GET         | /weather/geo?latitude=&longitude=  |                            Get temperature by geographic coordinates (latitude and longitude) |
+| GET         | /weather/geo?latitude=&longitude=  | Get temperature by geographic coordinates (latitude and longitude) |
 
 
