@@ -2,11 +2,13 @@ package com.viniciusroc.weatherapp.weatherapp.controller;
 
 import com.viniciusroc.weatherapp.weatherapp.model.City;
 import com.viniciusroc.weatherapp.weatherapp.model.ForecastMain;
+import com.viniciusroc.weatherapp.weatherapp.model.WeatherDataSet;
 import com.viniciusroc.weatherapp.weatherapp.service.WeatherService;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.FileInputStream;
-import java.util.Properties;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("weather")
@@ -41,6 +43,16 @@ public class WeatherController {
     public ForecastMain getForecastByCity(@PathVariable String city) {
         try {
             return weatherService.getForecastByCity(city);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/csv")
+    public List<WeatherDataSet> getTemperatureForCsv() {
+        try {
+            return weatherService.getTemperatureForCsv();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             throw new RuntimeException(e);
