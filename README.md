@@ -43,6 +43,9 @@ Run the application:
 java -jar target/weatherapp.jar
 # The API will start on http://localhost:8080
 ```
+Or by running through the IDE:
+
+Example: In IntelliJ IDE, navigate to the main application class, right-click, and select "Run" (or "Run '[AppName]'") 
 
 API Endpoints (Usage)
 
