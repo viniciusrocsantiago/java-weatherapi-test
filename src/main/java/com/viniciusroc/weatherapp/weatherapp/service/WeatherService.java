@@ -25,12 +25,12 @@ public class WeatherService {
         System.out.println("LOG: Cache Miss - zipCode: " + zipCode);
 
         String weatherUrl = url + "forecast?zip=" + zipCode + metric + cnt + lang + "&appid=" + apiKey;
-        //try {
+        try {
             Result result = getResult(weatherUrl);
             return result.gson().fromJson(result.json(), ForecastMain.class);
-        //} catch (Exception e) {
-        //    throw new RuntimeException(e);
-        //}
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public City getTemperatureByCity(String name) throws Exception {
@@ -60,6 +60,5 @@ public class WeatherService {
         return new Result(json, gson);
     }
 
-    private record Result(String json, Gson gson) {
-    }
+    private record Result(String json, Gson gson) { }
 }

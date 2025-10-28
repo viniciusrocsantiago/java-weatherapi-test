@@ -1,15 +1,12 @@
 package com.viniciusroc.weatherapp.weatherapp.controller;
 
-import com.viniciusroc.weatherapp.weatherapp.handler.CustomError;
 import com.viniciusroc.weatherapp.weatherapp.model.City;
 import com.viniciusroc.weatherapp.weatherapp.model.ForecastMain;
-import com.viniciusroc.weatherapp.weatherapp.model.WeatherDataSet;
 import com.viniciusroc.weatherapp.weatherapp.service.WeatherService;
 import org.springframework.cache.CacheManager;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
-import java.util.List;
 import java.util.Objects;
 
 @RestController
