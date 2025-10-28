@@ -1,13 +1,13 @@
 # WeatherApp API
-A simple RESTful API built with Spring Boot to retrieve current weather data and forecasts for cities, powered by external weather services. This project is ideal for developers needing quick and reliable weather data integration.
+A simple RESTful API built with Spring Boot to retrieve current weather data and forecasts for cities filtered by zip code. It is powered by external weather services. 
 
 ### Technologies Used
-This project is a modern Java application utilizing the following key technologies:
-- Language: Java
+This project is a Java application utilizing the following key technologies:
 - Framework: Spring Boot 3.x
 - Build Tool: Maven (Inferred from standard Java/Spring setup)
 - Architecture: RESTful Web Service
-- Dependencies: Spring Web, likely uses a JSON processing library (e.g., GSON) and an HTTP client to communicate with the external weather API.
+- Dependencies: Spring Web, likely uses a JSON processing library (Gson) and an HTTP client to communicate with the external weather API.
+- Caffeine (caching library)
 - Testing: JUnit, Mockito
 
 ### Getting Started
@@ -17,41 +17,40 @@ These instructions will get a copy of the project up and running on your local m
 You will need the following software installed:
 - Java Development Kit (JDK) 25
 - Maven
-- An API Key from your chosen external weather service (e.g., OpenWeatherMap, WeatherAPI, etc.) to configure the WeatherService.
+- API Key from the external weather service (OpenWeatherMap provided) to configure the WeatherService.
 - Git
 
 ### Installation and Setup
 Clone the repository:
-
-Bash
 ```shell
 git clone https://github.com/viniciusrocsantiago/java-weatherapi-test.git
 cd weatherapp
 ```
 
+API Documentation
+- Swagger: http://localhost:8080/swagger-ui/index.htm
+
 Configure API Key:
-- It needs to register in [OpenWeatherMap](https://home.openweathermap.org/)
+- API Key is provided for [OpenWeatherMap](https://home.openweathermap.org/). No need registration required.
 
 Build the project:
-Bash
 ```shell
 mvn clean install
 ```
 
 Run the application:
-Bash
 ```shell
 java -jar target/weatherapp.jar
-# The API will typically start on http://localhost:8080
+# The API will start on http://localhost:8080
 ```
 
-API Endpoints (Usage)The API provides several endpoints to retrieve weather data. All endpoints are prefixed with /weather.
+API Endpoints (Usage)
 
-| HTTP Method |                Path                | Description                                                                                   |
-|:------------|:----------------------------------:|:----------------------------------------------------------------------------------------------|
-| GET         |        /weather/city/{city}        | Get current weather data for a specific city                                                  |
-| GET         |      /weather/forecast/{city}      | Get the weather forecast for a specific city                                                  |
-| GET         |            /weather/csv            | Process weather data from a CSV file and return the results. (Inferred to be a batch process) |
-| GET         | /weather/geo?latitude=&longitude=  | Get temperature by geographic coordinates (latitude and longitude)                            |
+The API provides endpoints to retrieve weather data. All endpoints are prefixed with /weather.
+
+| HTTP Method | Path                              | Description                                               |
+|:------------|:----------------------------------|:----------------------------------------------------------|
+| GET         | /weather/forecast/{zipCode}       | Get current weather forecast data for a specific zip code |
+| GET         | /weather/city/{cityName}          | Get the weather forecast for a specific city              |
 
 
