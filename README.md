@@ -7,7 +7,7 @@ This project is a Java application utilizing the following key technologies:
 - Build Tool: Maven (Inferred from standard Java/Spring setup)
 - Architecture: RESTful Web Service
 - Dependencies: Spring Web, likely uses a JSON processing library (Gson) and an HTTP client to communicate with the external weather API.
-- Caffeine (caching library): Display indicator in console application if result is pulled from cache
+- Caffeine (caching library): Indicator is displayed in console application if result is pulled from cache
 - Testing: JUnit, Mockito
 
 ### Getting Started
@@ -61,7 +61,10 @@ The API provides endpoints to retrieve weather data. All endpoints are prefixed 
 
 Caffeine, a Java caching library and it is integrated into this application to cache frequently accessed data. This helps reduce the load on backend systems and significantly speeds up data retrieval. 
 
-OBS.: It is applied only to endpoint: _/weather/forecast/{zipCode}_
+**OBS**.: It is applied only to endpoint: _/weather/forecast/{zipCode}_
+
+A log message indicates whether the result was retrieved from the cache.
+
 
 **Key features used:**
 -   **Time-based expiration:** Entries in the cache are configured to expire after a certain duration since their last write, ensuring data freshness.
