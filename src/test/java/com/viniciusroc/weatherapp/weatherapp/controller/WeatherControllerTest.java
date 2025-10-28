@@ -2,12 +2,12 @@ package com.viniciusroc.weatherapp.weatherapp.controller;
 
 import com.viniciusroc.weatherapp.weatherapp.model.*;
 import com.viniciusroc.weatherapp.weatherapp.service.WeatherService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
@@ -52,7 +52,7 @@ public class WeatherControllerTest {
         assertNotNull(result);
         assertEquals(mockForecast, result);
 
-        //verify(cacheManager).getCache("weatherForecasts");
+        verify(cacheManager).getCache("weatherForecasts");
         verify(cache).get(zipCode);
         verify(weatherService).getForecastByZipCode(zipCode);
     }
@@ -104,7 +104,6 @@ public class WeatherControllerTest {
     void testGetForecastByZipCode_WhenServiceThrowsException() throws IOException {
         // Arrange
         String zipCode = "99999";
-        var mockForecast = getForecastMain();
 
         when(cacheManager.getCache("weatherForecasts")).thenReturn(cache);
         when(cache.get(zipCode)).thenReturn(null);
@@ -120,23 +119,28 @@ public class WeatherControllerTest {
         verify(weatherService).getForecastByZipCode(zipCode);
     }
 
-    @Test
-    public void getTemperatureByCity_Success() throws Exception {
+    @ParameterizedTest
+    @CsvSource({
+            "Campinas",
+            "Sao Paulo",
+            "New York"
+    })
+    public void getTemperatureByCity_Success(String cityName) throws Exception {
         // Arrange
-        City mockCityData = getCity("Campinas");
+        City mockCityData = getCity(cityName);
 
-        when(weatherService.getTemperatureByCity("Campinas")).thenReturn(mockCityData);
+        when(weatherService.getTemperatureByCity(cityName)).thenReturn(mockCityData);
 
         // Act
-        City result = weatherController.getTemperatureByCity("Campinas");
+        City result = weatherController.getTemperatureByCity(cityName);
 
         // Assert
         assertNotNull(result, "The city should not be null.");
-        assertEquals("Campinas", result.getName(), "The city name should match the request.");
+        assertEquals(cityName, result.getName(), "The city name should match the request.");
         assertEquals(30.0, result.getMain().getTemp(), "The temperature should match the mocked value.");
 
         // Verify that the service method was called exactly once with the correct parameter
-        verify(weatherService, times(1)).getTemperatureByCity("Campinas");
+        verify(weatherService, times(1)).getTemperatureByCity(cityName);
     }
 
     private ForecastMain getForecastMain() {

@@ -17,7 +17,7 @@ These instructions will get a copy of the project up and running on your local m
 You will need the following software installed:
 - Java Development Kit (JDK) 25
 - Maven
-- API Key from the external weather service (OpenWeatherMap provided) to configure the WeatherService.
+- API Key from the external weather service (OpenWeatherMap API Key provided: Due to expire in 30 days) to configure the WeatherService.
 - Git
 
 ### Installation and Setup
