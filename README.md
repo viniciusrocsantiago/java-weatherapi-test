@@ -1,24 +1,24 @@
 # WeatherApp API
 A simple RESTful API built with Spring Boot to retrieve current weather data and forecasts for cities filtered by zip code. It is powered by external weather services. 
 
-### Technologies Used
+### Technologies
 This project is a Java application utilizing the following key technologies:
 - Framework: Spring Boot 3.x
 - Build Tool: Maven (Inferred from standard Java/Spring setup)
 - Architecture: RESTful Web Service
 - Dependencies: Spring Web, likely uses a JSON processing library (Gson) and an HTTP client to communicate with the external weather API.
-- Caffeine (caching library): Indicator is displayed in console application if result is pulled from cache
+- Caffeine (caching library): An indicator is displayed in console application if result is pulled from cache
 - Testing: JUnit, Mockito
-
-### Getting Started
-These instructions will get a copy of the project up and running on your local machine for development and testing.
 
 #### Prerequisites
 You will need the following software installed:
 - Java Development Kit (JDK) 25
 - Maven
-- API Key from the external weather service (OpenWeatherMap API Key provided: Due to expire in 30 days) to configure the WeatherService.
+- The OpenWeatherMap API Key is required to configure the WeatherService. **Note:** This API Key is provided by application, and it was set to expire in 30 days.
 - Git
+
+### Getting Started
+These instructions will get a copy of the project up and running on your local machine for development and testing.
 
 ### Installation and Setup
 Clone the repository:
@@ -31,7 +31,8 @@ API Documentation
 - Swagger: http://localhost:8080/swagger-ui/index.htm
 
 Configure API Key:
-- API Key is provided for [OpenWeatherMap](https://home.openweathermap.org/). No need registration required.
+- API Key is provided for [OpenWeatherMap](https://home.openweathermap.org/).
+**Note:** A free, internal API Key is pre-configured for immediate use (60 calls/minute limit). No registration is required.
 
 Build the project:
 ```shell
@@ -59,7 +60,7 @@ The API provides endpoints to retrieve weather data. All endpoints are prefixed 
 
 ### Caching with Caffeine
 
-Caffeine, a Java caching library and it is integrated into this application to cache frequently accessed data. This helps reduce the load on backend systems and significantly speeds up data retrieval. 
+Caffeine, a Java caching library, and it is integrated into this application to cache frequently accessed data. This helps reduce the load on backend systems and significantly speeds up data retrieval. 
 
 **OBS**.: It is applied only to endpoint: _/weather/forecast/{zipCode}_
 
@@ -67,4 +68,4 @@ A log message indicates whether the result was retrieved from the cache.
 
 
 **Key features used:**
--   **Time-based expiration:** Entries in the cache are configured to expire after a certain duration since their last write, ensuring data freshness.
+-   **Time-based expiration:** Entries in the cache are configured to expire after a certain duration (30 minutes) since their last write, ensuring data freshness.

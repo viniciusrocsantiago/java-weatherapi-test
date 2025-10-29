@@ -35,7 +35,7 @@ public class WeatherController {
             if (isCached) {
                 System.out.println("From Cache - zipCode: " + zipCode);
             } else {
-                System.out.println("Service will be executed.");
+                System.out.println("No cache. Service will be executed.");
             }
             return weatherService.getForecastByZipCode(zipCode);
         } catch (Exception e) {
@@ -45,7 +45,7 @@ public class WeatherController {
     }
 
     /**
-     * Get Today's temperature by city
+     * Get current temperature by city
      * @param city City name
      * @return The object containing coordinates (latitude, longitude),
      * current temperature, temp min and max, humidity, wind speed

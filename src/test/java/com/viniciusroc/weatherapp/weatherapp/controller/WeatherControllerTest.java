@@ -12,7 +12,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class WeatherControllerTest {
 
 
     @Test
-    void testGetForecastByZipCode_WhenCached() throws IOException {
+    void testGetForecastByZipCode_WhenCached() {
         // Arrange
         String zipCode = "12345";
 
@@ -58,7 +57,7 @@ public class WeatherControllerTest {
     }
 
     @Test
-    void testGetForecastByZipCode_WhenNotCached() throws IOException {
+    void testGetForecastByZipCode_WhenNotCached() {
         // Arrange
         String zipCode = "67890";
 
@@ -81,7 +80,7 @@ public class WeatherControllerTest {
     }
 
     @Test
-    void testGetForecastByZipCode_WhenCacheIsNull() throws IOException {
+    void testGetForecastByZipCode_WhenCacheIsNull() {
         // Arrange
         String zipCode = "00000";
         var mockForecast = getForecastMain();
@@ -101,7 +100,7 @@ public class WeatherControllerTest {
     }
 
     @Test
-    void testGetForecastByZipCode_WhenServiceThrowsException() throws IOException {
+    void testGetForecastByZipCode_WhenServiceThrowsException() {
         // Arrange
         String zipCode = "99999";
 

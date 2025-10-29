@@ -16,11 +16,11 @@ public class WeatherService {
     private final String url = "http://api.openweathermap.org/data/2.5/";
     private final String metric = "&units=imperial"; // Unit default: Kelvin, metric: Celsius, imperial: Fahrenheit
     private final String lang = "&lang=en";
-    private final String cnt = "&cnt=10"; // number of timestamps to be returned
-    private final String apiKey = "b6e493b31a799226736092c1c7e72588"; // API_KEY
+    private final String cnt = "&cnt=10"; // Number of timestamps to be returned
+    private final String apiKey = "b6e493b31a799226736092c1c7e72588"; // Free API_KEY valid per 30 days
 
     @Cacheable(value = "weatherForecasts")
-    public ForecastMain getForecastByZipCode(String zipCode) throws IOException {
+    public ForecastMain getForecastByZipCode(String zipCode) {
         // Cache miss - this log will be executed only once during the cache configured time (30min)
         System.out.println("LOG: Cache Miss - zipCode: " + zipCode);
 
